@@ -14,7 +14,7 @@ export function initTable(settings, onAction) {
     // @todo: #1.2 —  вывести дополнительные шаблоны до и после таблицы
     before.reverse().forEach(subName => {                  // перебираем нужный массив идентификаторов
         root[subName] = cloneTemplate(subName);            // клонируем и получаем объект, сохраняем в таблице
-        root.container.append(root[subName].container);    // добавляем к таблице после (append) или до (prepend)
+        root.container.prepend(root[subName].container);    // добавляем к таблице после (append) или до (prepend)
     }); 
 
     after.forEach(subName => {
@@ -49,7 +49,6 @@ export function initTable(settings, onAction) {
                     row.elements[key].textContent = item[key];
                 }
             });
-            //console.log(row.container);
             return row.container;
         });
         root.elements.rows.replaceChildren(...nextRows);
